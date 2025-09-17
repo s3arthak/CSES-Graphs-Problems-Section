@@ -1,0 +1,31 @@
+ int dr[]={-1,0,1,0};
+ int dc[]={0,-1,0,1};
+ int n,m;
+
+ void dfs(int i, int j, char [][]g){
+     g[i][j]='#';
+     for(int x=0; x < 4; x++){
+         int ni= dr[x]+ i;
+         int nj= dc[x]+ j;
+         if(ni >=0 && nj>=0 && ni< n && nj< m && g[ni][nj]=='.'){
+             dfs(ni, nj, g);
+         }
+     }
+ }
+  public void ans() {
+        n= ini();
+        m= ini();
+        char mat[][]=new char[n][m];
+        inMat(mat);
+        int cnt=0;
+        for(int i=0; i< n; i++){
+             for(int j=0; j< m ; j++){
+                 if(mat[i][j]=='.'){
+                     dfs(i, j, mat);
+                     cnt++;
+                 }
+             }
+        }
+        pll(cnt);
+    }
+}  
